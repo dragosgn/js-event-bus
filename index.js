@@ -24,3 +24,14 @@ function publish(eventType, arg) {
     subscriptions[eventType][key](arg)
   );
 }
+
+function getIdGenerator() {
+  let lastId = 0;
+
+  return function getNextUniqueId() {
+    lastId += 1;
+    return lastId;
+  };
+}
+
+module.exports = { publish, subscribe };
